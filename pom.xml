@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- (0) <modelVersion/> -->
+    <!-- (1) <parent/> -->
+
+    <parent>
+        <artifactId>parent-boot-2</artifactId>
+        <groupId>com.baeldung</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../parent-boot-2</relativePath>
+    </parent>
+
+    <!-- (2) <groupId/> -->
+    <!-- (3) <artifactId/> -->
+
+    <artifactId>spring-boot-crud</artifactId>
+
+    <!-- (4) <version/> -->
+    <!-- (5) <packaging/> -->
+
+    <!-- (6) <name/> -->
+    <name>spring-boot-crud</name>
+
+    <!-- (7) <description/> -->
+    <!-- (8) <url/> -->
+    <!-- (9) <inceptionYear/> -->
+    <!-- (10) <organization/> -->
+    <!-- (11) <licenses/> -->
+
+    <!-- (12) <developers/> -->
+    <!-- (13) <contributors/> -->
+
+    <!-- (14) <mailingLists/> -->
+
+    <!-- (15) <prerequisites/> -->
+
+    <!-- (16) <modules/> -->
+
+    <!-- (17) <scm/> -->
+    <!-- (18) <issueManagement/> -->
+    <!-- (19) <ciManagement/> -->
+    <!-- (20) <distributionManagement/> -->
+
+    <!-- (21) <properties/> -->
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <!-- (22) <dependencyManagement/> -->
+    <!-- (23) <dependencies/> -->
+
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- (24) <repositories/> -->
+    <!-- (25) <pluginRepositories/> -->
+
+    <!-- (26) <build/> -->
+
+    <build>
+        <finalName>spring-boot-crud</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <classifier>exec</classifier>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <!-- (27) <reporting/> -->
+
+    <!-- (28) <profiles/> -->
+
+
+
+
+
+
+
+
+
+
+
+
+</project>

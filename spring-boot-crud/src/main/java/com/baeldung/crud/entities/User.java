@@ -12,16 +12,20 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-    @NotBlank(message = "Name is mandatory")
-    private String name;
+    @NotBlank(message = "First Name is mandatory")
+    private String fname;
     
+    @NotBlank(message = "Last Name is mandatory")
+    private String lname;
+
     @NotBlank(message = "Email is mandatory")
     private String email;
 
     public User() {}
 
-    public User(String name, String email) {
-        this.name = name;
+    public User(String fname, String lname, String email) {
+        this.fname = fname;
+        this.lname = lname;
         this.email = email;
     }
 
@@ -33,16 +37,24 @@ public class User {
         return id;
     }
     
-    public void setName(String name) {
-        this.name = name;
+    public void setFname(String fname) {
+        this.fname = fname;
+    }
+
+    public void setLname(String lname) {
+        this.lname = lname;
     }
     
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFname() {
+        return fname;
+    }
+
+    public String getLname() {
+        return lname;
     }
 
     public String getEmail() {
@@ -51,6 +63,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", name=" + name + ", email=" + email + '}';
+        return "User{" + "id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
     }
 }

@@ -17,9 +17,14 @@
                     <form action="#" th:action="@{/adduser}" th:object="${user}" method="post">
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <label for="name" class="col-form-label">Name</label>
-                                <input type="text" th:field="*{name}" class="form-control" id="name" placeholder="Name">
-                                <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger"></span>
+                                <label for="fname" class="col-form-label">First Name</label>
+                                <input type="text" th:field="*{fname}" class="form-control" id="fname" placeholder="First Name">
+                                <span th:if="${#fields.hasErrors('fname')}" th:errors="*{fname}" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="lname" class="col-form-label">Last Name</label>
+                                <input type="text" th:field="*{lname}" class="form-control" id="lname" placeholder="Last Name">
+                                <span th:if="${#fields.hasErrors('lname')}" th:errors="*{lname}" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="email" class="col-form-label">Email</label>

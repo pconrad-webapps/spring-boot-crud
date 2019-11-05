@@ -13,21 +13,35 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.baeldung.crud.entities.User;
 import com.baeldung.crud.repositories.UserRepository;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Controller
 public class UserController {
     
+    private Logger logger = LoggerFactory.getLogger(UserController.class);
+
     private final UserRepository userRepository;
 
     @Autowired
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-    
+     
+    @GetMapping("/")
+    public String home(Model model) {
+        logger.info("Entering UserController.home.  model="+model.toString());
+        model.addAttribute("users", userRepository.findAll());
+        logger.info("Exiting UserController.home.  model="+model.toString());
+        return "index";
+    }
+
     @GetMapping("/signup")
     public String showSignUpForm(User user) {
         return "add-user";
     }
-    
+   
+
     @PostMapping("/adduser")
     public String addUser(@Valid User user, BindingResult result, Model model) {
         if (result.hasErrors()) {

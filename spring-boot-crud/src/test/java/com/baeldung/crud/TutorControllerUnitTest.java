@@ -29,10 +29,9 @@ public class TutorControllerUnitTest {
     }
 
     @Test
-    public void whenCalledshowSignUpForm_thenCorrect() {
+    public void whenCalledAdd_thenCorrect() {
         Tutor tutor = new Tutor("John", "Smith", "john@domain.com");
-
-        assertThat(tutorController.showSignUpForm(tutor)).isEqualTo("add-tutor");
+        assertThat(tutorController.create(tutor)).isEqualTo("tutors/create");
     }
     
     @Test

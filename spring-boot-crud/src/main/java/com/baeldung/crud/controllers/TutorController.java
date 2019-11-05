@@ -28,24 +28,15 @@ public class TutorController {
         this.tutorRepository = tutorRepository;
     }
      
-    @GetMapping("/")
-    public String home(Model model) {
-        logger.info("Entering TutorController.home.  model="+model.toString());
-        model.addAttribute("tutors", tutorRepository.findAll());
-        logger.info("Exiting TutorController.home.  model="+model.toString());
-        return "index";
-    }
-
-    @GetMapping("/signup")
-    public String showSignUpForm(Tutor tutor) {
-        return "add-tutor";
+    @GetMapping("/tutors/create")
+    public String create(Tutor tutor) {
+        return "tutors/create";
     }
    
-
-    @PostMapping("/addtutor")
+    @PostMapping("/tutors/add")
     public String addTutor(@Valid Tutor tutor, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "add-tutor";
+            return "tutors/create";
         }
         
         tutorRepository.save(tutor);
@@ -53,30 +44,28 @@ public class TutorController {
         return "index";
     }
     
-    @GetMapping("/edit/{id}")
+    @GetMapping("/tutors/edit/{id}")
     public String showUpdateForm(@PathVariable("id") long id, Model model) {
         Tutor tutor = tutorRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid tutor Id:" + id));
         model.addAttribute("tutor", tutor);
-        return "update-tutor";
+        return "tutors/update";
     }
     
-    @PostMapping("/update/{id}")
+    @PostMapping("/tutors/update/{id}")
     public String updateTutor(@PathVariable("id") long id, @Valid Tutor tutor, BindingResult result, Model model) {
         if (result.hasErrors()) {
             tutor.setId(id);
-            return "update-tutor";
+            return "tutors/update";
         }
         
         tutorRepository.save(tutor);
-        model.addAttribute("tutors", tutorRepository.findAll());
         return "index";
     }
     
-    @GetMapping("/delete/{id}")
+    @GetMapping("/tutors/delete/{id}")
     public String deleteTutor(@PathVariable("id") long id, Model model) {
         Tutor tutor = tutorRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid tutor Id:" + id));
         tutorRepository.delete(tutor);
-        model.addAttribute("tutors", tutorRepository.findAll());
         return "index";
     }
 }

@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class User {
+public class Tutor {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,9 +21,9 @@ public class User {
     @NotBlank(message = "Email is mandatory")
     private String email;
 
-    public User() {}
+    public Tutor() {}
 
-    public User(String fname, String lname, String email) {
+    public Tutor(String fname, String lname, String email) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
@@ -63,6 +63,6 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" + "id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
+        return "Tutor{" + "id=" + id + ", fname=" + fname + ", lname=" + lname + ", email=" + email + '}';
     }
 }

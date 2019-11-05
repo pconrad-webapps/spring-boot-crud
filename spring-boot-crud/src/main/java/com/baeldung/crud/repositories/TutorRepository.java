@@ -1,13 +1,13 @@
 package com.baeldung.crud.repositories;
 
-import com.baeldung.crud.entities.User;
+import com.baeldung.crud.entities.Tutor;
 import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface TutorRepository extends CrudRepository<Tutor, Long> {
     
-   // List<User> findByFname(String fname);
+   // List<Tutor> findByFname(String fname);
     
 }

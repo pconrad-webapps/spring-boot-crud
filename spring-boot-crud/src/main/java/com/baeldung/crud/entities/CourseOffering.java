@@ -6,11 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
+import java.util.Set;
+
+
+
+import javax.persistence.OneToMany;
+
+
 @Entity
 public class CourseOffering {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @NotBlank(message = "Course is mandatory (e.g. CMPSC 32)")
@@ -22,12 +29,19 @@ public class CourseOffering {
     @NotBlank(message = "Instructor is mandatory (e.g. Mirza)")
     private String instructor;
 
+    @OneToMany(mappedBy = "courseOffering")
+    private Set<TutorAssignment> tutorAssignments;
+
     public CourseOffering() {}
 
     public CourseOffering(String course, String quarter, String instructor) {
         this.course = course;
         this.quarter = quarter;
         this.instructor = instructor;
+    }
+
+    public Set<TutorAssignment> getTutorAssignments() {
+        return tutorAssignments;
     }
 
     public void setId(long id) {

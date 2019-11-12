@@ -22,24 +22,13 @@ public class HomeController {
     
     private Logger logger = LoggerFactory.getLogger(TutorController.class);
 
-    private final TutorRepository tutorRepository;
-    private final CourseOfferingRepository courseOfferingRepository;
-
     @Autowired
-    public HomeController(
-        TutorRepository tutorRepository, 
-        CourseOfferingRepository courseOfferingRepository
-     ) {
-        this.tutorRepository = tutorRepository;
-        this.courseOfferingRepository = courseOfferingRepository;
+    public HomeController() {
     }
      
     @GetMapping("/")
     public String home(Model model) {
         logger.info("Entering TutorController.home.  model="+model.toString());
-        // model.addAttribute("tutors", tutorRepository.findAll());
-        // model.addAttribute("courseOfferings", courseOfferingRepository.findAll());
-        logger.info("Exiting TutorController.home.  model="+model.toString());
         return "index";
     }
 

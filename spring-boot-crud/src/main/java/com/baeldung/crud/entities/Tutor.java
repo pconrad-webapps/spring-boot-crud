@@ -6,11 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 
+
+import java.util.Set;
+
+
+
+import javax.persistence.OneToMany;
+
+
 @Entity
 public class Tutor {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @NotBlank(message = "First Name is mandatory")
     private String fname;
@@ -21,12 +29,19 @@ public class Tutor {
     @NotBlank(message = "Email is mandatory")
     private String email;
 
+    @OneToMany(mappedBy = "tutor")
+    private Set<TutorAssignment> tutorAssignments;
+
     public Tutor() {}
 
     public Tutor(String fname, String lname, String email) {
         this.fname = fname;
         this.lname = lname;
         this.email = email;
+    }
+
+    public Set<TutorAssignment> getTutorAssignments() {
+        return tutorAssignments;
     }
 
     public void setId(long id) {

@@ -55,6 +55,7 @@ public class TutorAssignmentController {
         TutorAssignment a = tutorAssignmentRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid tutor assignment Id:" + id));
         tutorAssignmentRepository.delete(a);
+        model.addAttribute("tutorAssignments",tutorAssignmentRepository.findAll());
         return "index";
     }
 }
